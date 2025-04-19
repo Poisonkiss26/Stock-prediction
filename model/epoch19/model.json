@@ -1,0 +1,2663 @@
+{
+    "meta": {
+        "save_time": "2023-06-12 16:46:21.355698",
+        "weights_file_name": "weights.npz"
+    },
+    "service": {},
+    "graph": [
+        {
+            "node_type": "Variable",
+            "name": "input_vec_0",
+            "parents": [],
+            "children": [
+                "LSTM_concat_0"
+            ],
+            "kargs": {},
+            "dim": [
+                9,
+                1
+            ]
+        },
+        {
+            "node_type": "Variable",
+            "name": "input_vec_1",
+            "parents": [],
+            "children": [
+                "LSTM_concat_1"
+            ],
+            "kargs": {},
+            "dim": [
+                9,
+                1
+            ]
+        },
+        {
+            "node_type": "Variable",
+            "name": "input_vec_2",
+            "parents": [],
+            "children": [
+                "LSTM_concat_2"
+            ],
+            "kargs": {},
+            "dim": [
+                9,
+                1
+            ]
+        },
+        {
+            "node_type": "Variable",
+            "name": "input_vec_3",
+            "parents": [],
+            "children": [
+                "LSTM_concat_3"
+            ],
+            "kargs": {},
+            "dim": [
+                9,
+                1
+            ]
+        },
+        {
+            "node_type": "Variable",
+            "name": "input_vec_4",
+            "parents": [],
+            "children": [
+                "LSTM_concat_4"
+            ],
+            "kargs": {},
+            "dim": [
+                9,
+                1
+            ]
+        },
+        {
+            "node_type": "Variable",
+            "name": "input_vec_5",
+            "parents": [],
+            "children": [
+                "LSTM_concat_5"
+            ],
+            "kargs": {},
+            "dim": [
+                9,
+                1
+            ]
+        },
+        {
+            "node_type": "Variable",
+            "name": "LSTM_h_input_0",
+            "parents": [],
+            "children": [
+                "LSTM_concat_0"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "Variable",
+            "name": "LSTM_C_0",
+            "parents": [],
+            "children": [
+                "LSTM_multiply_C0_forget_0"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "Concat",
+            "name": "LSTM_concat_0",
+            "parents": [
+                "LSTM_h_input_0",
+                "input_vec_0"
+            ],
+            "children": [
+                "MatMul:17",
+                "MatMul:20",
+                "MatMul:23",
+                "MatMul:26"
+            ],
+            "kargs": {
+                "axis": 0
+            },
+            "dim": [
+                19,
+                1
+            ]
+        },
+        {
+            "node_type": "Variable",
+            "name": "LSTM_Wf_0",
+            "parents": [],
+            "children": [
+                "MatMul:17"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                19
+            ]
+        },
+        {
+            "node_type": "Variable",
+            "name": "LSTM_Bf_0",
+            "parents": [],
+            "children": [
+                "Add:18"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "Variable",
+            "name": "LSTM_Wi_0",
+            "parents": [],
+            "children": [
+                "MatMul:20"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                19
+            ]
+        },
+        {
+            "node_type": "Variable",
+            "name": "LSTM_Bi_0",
+            "parents": [],
+            "children": [
+                "Add:21"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "Variable",
+            "name": "LSTM_Wc_0",
+            "parents": [],
+            "children": [
+                "MatMul:23"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                19
+            ]
+        },
+        {
+            "node_type": "Variable",
+            "name": "LSTM_Bc_0",
+            "parents": [],
+            "children": [
+                "Add:24"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "Variable",
+            "name": "LSTM_Wo_0",
+            "parents": [],
+            "children": [
+                "MatMul:26"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                19
+            ]
+        },
+        {
+            "node_type": "Variable",
+            "name": "LSTM_Bo_0",
+            "parents": [],
+            "children": [
+                "Add:27"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "MatMul",
+            "name": "MatMul:17",
+            "parents": [
+                "LSTM_Wf_0",
+                "LSTM_concat_0"
+            ],
+            "children": [
+                "Add:18"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "Add",
+            "name": "Add:18",
+            "parents": [
+                "MatMul:17",
+                "LSTM_Bf_0"
+            ],
+            "children": [
+                "LSTM_gateforget_0"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "Logistic",
+            "name": "LSTM_gateforget_0",
+            "parents": [
+                "Add:18"
+            ],
+            "children": [
+                "LSTM_multiply_C0_forget_0"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "MatMul",
+            "name": "MatMul:20",
+            "parents": [
+                "LSTM_Wi_0",
+                "LSTM_concat_0"
+            ],
+            "children": [
+                "Add:21"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "Add",
+            "name": "Add:21",
+            "parents": [
+                "MatMul:20",
+                "LSTM_Bi_0"
+            ],
+            "children": [
+                "LSTM_gateinput_0"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "Logistic",
+            "name": "LSTM_gateinput_0",
+            "parents": [
+                "Add:21"
+            ],
+            "children": [
+                "LSTM_multiply_gateinput_Chat_0"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "MatMul",
+            "name": "MatMul:23",
+            "parents": [
+                "LSTM_Wc_0",
+                "LSTM_concat_0"
+            ],
+            "children": [
+                "Add:24"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "Add",
+            "name": "Add:24",
+            "parents": [
+                "MatMul:23",
+                "LSTM_Bc_0"
+            ],
+            "children": [
+                "LSTM_C-hat_0"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "Logistic",
+            "name": "LSTM_C-hat_0",
+            "parents": [
+                "Add:24"
+            ],
+            "children": [
+                "LSTM_multiply_gateinput_Chat_0"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "MatMul",
+            "name": "MatMul:26",
+            "parents": [
+                "LSTM_Wo_0",
+                "LSTM_concat_0"
+            ],
+            "children": [
+                "Add:27"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "Add",
+            "name": "Add:27",
+            "parents": [
+                "MatMul:26",
+                "LSTM_Bo_0"
+            ],
+            "children": [
+                "LSTM_gateoutput_0"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "Logistic",
+            "name": "LSTM_gateoutput_0",
+            "parents": [
+                "Add:27"
+            ],
+            "children": [
+                "LSTM_h_0"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "Multiply",
+            "name": "LSTM_multiply_C0_forget_0",
+            "parents": [
+                "LSTM_C_0",
+                "LSTM_gateforget_0"
+            ],
+            "children": [
+                "LSTM_add_0"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "Multiply",
+            "name": "LSTM_multiply_gateinput_Chat_0",
+            "parents": [
+                "LSTM_gateinput_0",
+                "LSTM_C-hat_0"
+            ],
+            "children": [
+                "LSTM_add_0"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "Add",
+            "name": "LSTM_add_0",
+            "parents": [
+                "LSTM_multiply_C0_forget_0",
+                "LSTM_multiply_gateinput_Chat_0"
+            ],
+            "children": [
+                "LSTM_tanh_0",
+                "LSTM_multiply_C0_forget_1"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "Tanh",
+            "name": "LSTM_tanh_0",
+            "parents": [
+                "LSTM_add_0"
+            ],
+            "children": [
+                "LSTM_h_0"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "Multiply",
+            "name": "LSTM_h_0",
+            "parents": [
+                "LSTM_tanh_0",
+                "LSTM_gateoutput_0"
+            ],
+            "children": [
+                "LSTM_concat_1"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "Concat",
+            "name": "LSTM_concat_1",
+            "parents": [
+                "LSTM_h_0",
+                "input_vec_1"
+            ],
+            "children": [
+                "MatMul:43",
+                "MatMul:46",
+                "MatMul:49",
+                "MatMul:52"
+            ],
+            "kargs": {
+                "axis": 0
+            },
+            "dim": [
+                19,
+                1
+            ]
+        },
+        {
+            "node_type": "Variable",
+            "name": "LSTM_Wf_1",
+            "parents": [],
+            "children": [
+                "MatMul:43"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                19
+            ]
+        },
+        {
+            "node_type": "Variable",
+            "name": "LSTM_Bf_1",
+            "parents": [],
+            "children": [
+                "Add:44"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "Variable",
+            "name": "LSTM_Wi_1",
+            "parents": [],
+            "children": [
+                "MatMul:46"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                19
+            ]
+        },
+        {
+            "node_type": "Variable",
+            "name": "LSTM_Bi_1",
+            "parents": [],
+            "children": [
+                "Add:47"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "Variable",
+            "name": "LSTM_Wc_1",
+            "parents": [],
+            "children": [
+                "MatMul:49"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                19
+            ]
+        },
+        {
+            "node_type": "Variable",
+            "name": "LSTM_Bc_1",
+            "parents": [],
+            "children": [
+                "Add:50"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "Variable",
+            "name": "LSTM_Wo_1",
+            "parents": [],
+            "children": [
+                "MatMul:52"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                19
+            ]
+        },
+        {
+            "node_type": "Variable",
+            "name": "LSTM_Bo_1",
+            "parents": [],
+            "children": [
+                "Add:53"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "MatMul",
+            "name": "MatMul:43",
+            "parents": [
+                "LSTM_Wf_1",
+                "LSTM_concat_1"
+            ],
+            "children": [
+                "Add:44"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "Add",
+            "name": "Add:44",
+            "parents": [
+                "MatMul:43",
+                "LSTM_Bf_1"
+            ],
+            "children": [
+                "LSTM_gateforget_1"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "Logistic",
+            "name": "LSTM_gateforget_1",
+            "parents": [
+                "Add:44"
+            ],
+            "children": [
+                "LSTM_multiply_C0_forget_1"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "MatMul",
+            "name": "MatMul:46",
+            "parents": [
+                "LSTM_Wi_1",
+                "LSTM_concat_1"
+            ],
+            "children": [
+                "Add:47"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "Add",
+            "name": "Add:47",
+            "parents": [
+                "MatMul:46",
+                "LSTM_Bi_1"
+            ],
+            "children": [
+                "LSTM_gateinput_1"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "Logistic",
+            "name": "LSTM_gateinput_1",
+            "parents": [
+                "Add:47"
+            ],
+            "children": [
+                "LSTM_multiply_gateinput_Chat_1"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "MatMul",
+            "name": "MatMul:49",
+            "parents": [
+                "LSTM_Wc_1",
+                "LSTM_concat_1"
+            ],
+            "children": [
+                "Add:50"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "Add",
+            "name": "Add:50",
+            "parents": [
+                "MatMul:49",
+                "LSTM_Bc_1"
+            ],
+            "children": [
+                "LSTM_C-hat_1"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "Logistic",
+            "name": "LSTM_C-hat_1",
+            "parents": [
+                "Add:50"
+            ],
+            "children": [
+                "LSTM_multiply_gateinput_Chat_1"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "MatMul",
+            "name": "MatMul:52",
+            "parents": [
+                "LSTM_Wo_1",
+                "LSTM_concat_1"
+            ],
+            "children": [
+                "Add:53"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "Add",
+            "name": "Add:53",
+            "parents": [
+                "MatMul:52",
+                "LSTM_Bo_1"
+            ],
+            "children": [
+                "LSTM_gateoutput_1"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "Logistic",
+            "name": "LSTM_gateoutput_1",
+            "parents": [
+                "Add:53"
+            ],
+            "children": [
+                "LSTM_h_1"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "Multiply",
+            "name": "LSTM_multiply_C0_forget_1",
+            "parents": [
+                "LSTM_add_0",
+                "LSTM_gateforget_1"
+            ],
+            "children": [
+                "LSTM_add_1"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "Multiply",
+            "name": "LSTM_multiply_gateinput_Chat_1",
+            "parents": [
+                "LSTM_gateinput_1",
+                "LSTM_C-hat_1"
+            ],
+            "children": [
+                "LSTM_add_1"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "Add",
+            "name": "LSTM_add_1",
+            "parents": [
+                "LSTM_multiply_C0_forget_1",
+                "LSTM_multiply_gateinput_Chat_1"
+            ],
+            "children": [
+                "LSTM_tanh_1",
+                "LSTM_multiply_C0_forget_2"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "Tanh",
+            "name": "LSTM_tanh_1",
+            "parents": [
+                "LSTM_add_1"
+            ],
+            "children": [
+                "LSTM_h_1"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "Multiply",
+            "name": "LSTM_h_1",
+            "parents": [
+                "LSTM_tanh_1",
+                "LSTM_gateoutput_1"
+            ],
+            "children": [
+                "LSTM_concat_2"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "Concat",
+            "name": "LSTM_concat_2",
+            "parents": [
+                "LSTM_h_1",
+                "input_vec_2"
+            ],
+            "children": [
+                "MatMul:69",
+                "MatMul:72",
+                "MatMul:75",
+                "MatMul:78"
+            ],
+            "kargs": {
+                "axis": 0
+            },
+            "dim": [
+                19,
+                1
+            ]
+        },
+        {
+            "node_type": "Variable",
+            "name": "LSTM_Wf_2",
+            "parents": [],
+            "children": [
+                "MatMul:69"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                19
+            ]
+        },
+        {
+            "node_type": "Variable",
+            "name": "LSTM_Bf_2",
+            "parents": [],
+            "children": [
+                "Add:70"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "Variable",
+            "name": "LSTM_Wi_2",
+            "parents": [],
+            "children": [
+                "MatMul:72"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                19
+            ]
+        },
+        {
+            "node_type": "Variable",
+            "name": "LSTM_Bi_2",
+            "parents": [],
+            "children": [
+                "Add:73"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "Variable",
+            "name": "LSTM_Wc_2",
+            "parents": [],
+            "children": [
+                "MatMul:75"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                19
+            ]
+        },
+        {
+            "node_type": "Variable",
+            "name": "LSTM_Bc_2",
+            "parents": [],
+            "children": [
+                "Add:76"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "Variable",
+            "name": "LSTM_Wo_2",
+            "parents": [],
+            "children": [
+                "MatMul:78"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                19
+            ]
+        },
+        {
+            "node_type": "Variable",
+            "name": "LSTM_Bo_2",
+            "parents": [],
+            "children": [
+                "Add:79"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "MatMul",
+            "name": "MatMul:69",
+            "parents": [
+                "LSTM_Wf_2",
+                "LSTM_concat_2"
+            ],
+            "children": [
+                "Add:70"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "Add",
+            "name": "Add:70",
+            "parents": [
+                "MatMul:69",
+                "LSTM_Bf_2"
+            ],
+            "children": [
+                "LSTM_gateforget_2"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "Logistic",
+            "name": "LSTM_gateforget_2",
+            "parents": [
+                "Add:70"
+            ],
+            "children": [
+                "LSTM_multiply_C0_forget_2"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "MatMul",
+            "name": "MatMul:72",
+            "parents": [
+                "LSTM_Wi_2",
+                "LSTM_concat_2"
+            ],
+            "children": [
+                "Add:73"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "Add",
+            "name": "Add:73",
+            "parents": [
+                "MatMul:72",
+                "LSTM_Bi_2"
+            ],
+            "children": [
+                "LSTM_gateinput_2"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "Logistic",
+            "name": "LSTM_gateinput_2",
+            "parents": [
+                "Add:73"
+            ],
+            "children": [
+                "LSTM_multiply_gateinput_Chat_2"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "MatMul",
+            "name": "MatMul:75",
+            "parents": [
+                "LSTM_Wc_2",
+                "LSTM_concat_2"
+            ],
+            "children": [
+                "Add:76"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "Add",
+            "name": "Add:76",
+            "parents": [
+                "MatMul:75",
+                "LSTM_Bc_2"
+            ],
+            "children": [
+                "LSTM_C-hat_2"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "Logistic",
+            "name": "LSTM_C-hat_2",
+            "parents": [
+                "Add:76"
+            ],
+            "children": [
+                "LSTM_multiply_gateinput_Chat_2"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "MatMul",
+            "name": "MatMul:78",
+            "parents": [
+                "LSTM_Wo_2",
+                "LSTM_concat_2"
+            ],
+            "children": [
+                "Add:79"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "Add",
+            "name": "Add:79",
+            "parents": [
+                "MatMul:78",
+                "LSTM_Bo_2"
+            ],
+            "children": [
+                "LSTM_gateoutput_2"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "Logistic",
+            "name": "LSTM_gateoutput_2",
+            "parents": [
+                "Add:79"
+            ],
+            "children": [
+                "LSTM_h_2"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "Multiply",
+            "name": "LSTM_multiply_C0_forget_2",
+            "parents": [
+                "LSTM_add_1",
+                "LSTM_gateforget_2"
+            ],
+            "children": [
+                "LSTM_add_2"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "Multiply",
+            "name": "LSTM_multiply_gateinput_Chat_2",
+            "parents": [
+                "LSTM_gateinput_2",
+                "LSTM_C-hat_2"
+            ],
+            "children": [
+                "LSTM_add_2"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "Add",
+            "name": "LSTM_add_2",
+            "parents": [
+                "LSTM_multiply_C0_forget_2",
+                "LSTM_multiply_gateinput_Chat_2"
+            ],
+            "children": [
+                "LSTM_tanh_2",
+                "LSTM_multiply_C0_forget_3"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "Tanh",
+            "name": "LSTM_tanh_2",
+            "parents": [
+                "LSTM_add_2"
+            ],
+            "children": [
+                "LSTM_h_2"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "Multiply",
+            "name": "LSTM_h_2",
+            "parents": [
+                "LSTM_tanh_2",
+                "LSTM_gateoutput_2"
+            ],
+            "children": [
+                "LSTM_concat_3"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "Concat",
+            "name": "LSTM_concat_3",
+            "parents": [
+                "LSTM_h_2",
+                "input_vec_3"
+            ],
+            "children": [
+                "MatMul:95",
+                "MatMul:98",
+                "MatMul:101",
+                "MatMul:104"
+            ],
+            "kargs": {
+                "axis": 0
+            },
+            "dim": [
+                19,
+                1
+            ]
+        },
+        {
+            "node_type": "Variable",
+            "name": "LSTM_Wf_3",
+            "parents": [],
+            "children": [
+                "MatMul:95"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                19
+            ]
+        },
+        {
+            "node_type": "Variable",
+            "name": "LSTM_Bf_3",
+            "parents": [],
+            "children": [
+                "Add:96"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "Variable",
+            "name": "LSTM_Wi_3",
+            "parents": [],
+            "children": [
+                "MatMul:98"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                19
+            ]
+        },
+        {
+            "node_type": "Variable",
+            "name": "LSTM_Bi_3",
+            "parents": [],
+            "children": [
+                "Add:99"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "Variable",
+            "name": "LSTM_Wc_3",
+            "parents": [],
+            "children": [
+                "MatMul:101"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                19
+            ]
+        },
+        {
+            "node_type": "Variable",
+            "name": "LSTM_Bc_3",
+            "parents": [],
+            "children": [
+                "Add:102"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "Variable",
+            "name": "LSTM_Wo_3",
+            "parents": [],
+            "children": [
+                "MatMul:104"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                19
+            ]
+        },
+        {
+            "node_type": "Variable",
+            "name": "LSTM_Bo_3",
+            "parents": [],
+            "children": [
+                "Add:105"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "MatMul",
+            "name": "MatMul:95",
+            "parents": [
+                "LSTM_Wf_3",
+                "LSTM_concat_3"
+            ],
+            "children": [
+                "Add:96"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "Add",
+            "name": "Add:96",
+            "parents": [
+                "MatMul:95",
+                "LSTM_Bf_3"
+            ],
+            "children": [
+                "LSTM_gateforget_3"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "Logistic",
+            "name": "LSTM_gateforget_3",
+            "parents": [
+                "Add:96"
+            ],
+            "children": [
+                "LSTM_multiply_C0_forget_3"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "MatMul",
+            "name": "MatMul:98",
+            "parents": [
+                "LSTM_Wi_3",
+                "LSTM_concat_3"
+            ],
+            "children": [
+                "Add:99"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "Add",
+            "name": "Add:99",
+            "parents": [
+                "MatMul:98",
+                "LSTM_Bi_3"
+            ],
+            "children": [
+                "LSTM_gateinput_3"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "Logistic",
+            "name": "LSTM_gateinput_3",
+            "parents": [
+                "Add:99"
+            ],
+            "children": [
+                "LSTM_multiply_gateinput_Chat_3"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "MatMul",
+            "name": "MatMul:101",
+            "parents": [
+                "LSTM_Wc_3",
+                "LSTM_concat_3"
+            ],
+            "children": [
+                "Add:102"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "Add",
+            "name": "Add:102",
+            "parents": [
+                "MatMul:101",
+                "LSTM_Bc_3"
+            ],
+            "children": [
+                "LSTM_C-hat_3"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "Logistic",
+            "name": "LSTM_C-hat_3",
+            "parents": [
+                "Add:102"
+            ],
+            "children": [
+                "LSTM_multiply_gateinput_Chat_3"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "MatMul",
+            "name": "MatMul:104",
+            "parents": [
+                "LSTM_Wo_3",
+                "LSTM_concat_3"
+            ],
+            "children": [
+                "Add:105"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "Add",
+            "name": "Add:105",
+            "parents": [
+                "MatMul:104",
+                "LSTM_Bo_3"
+            ],
+            "children": [
+                "LSTM_gateoutput_3"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "Logistic",
+            "name": "LSTM_gateoutput_3",
+            "parents": [
+                "Add:105"
+            ],
+            "children": [
+                "LSTM_h_3"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "Multiply",
+            "name": "LSTM_multiply_C0_forget_3",
+            "parents": [
+                "LSTM_add_2",
+                "LSTM_gateforget_3"
+            ],
+            "children": [
+                "LSTM_add_3"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "Multiply",
+            "name": "LSTM_multiply_gateinput_Chat_3",
+            "parents": [
+                "LSTM_gateinput_3",
+                "LSTM_C-hat_3"
+            ],
+            "children": [
+                "LSTM_add_3"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "Add",
+            "name": "LSTM_add_3",
+            "parents": [
+                "LSTM_multiply_C0_forget_3",
+                "LSTM_multiply_gateinput_Chat_3"
+            ],
+            "children": [
+                "LSTM_tanh_3",
+                "LSTM_multiply_C0_forget_4"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "Tanh",
+            "name": "LSTM_tanh_3",
+            "parents": [
+                "LSTM_add_3"
+            ],
+            "children": [
+                "LSTM_h_3"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "Multiply",
+            "name": "LSTM_h_3",
+            "parents": [
+                "LSTM_tanh_3",
+                "LSTM_gateoutput_3"
+            ],
+            "children": [
+                "LSTM_concat_4"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "Concat",
+            "name": "LSTM_concat_4",
+            "parents": [
+                "LSTM_h_3",
+                "input_vec_4"
+            ],
+            "children": [
+                "MatMul:121",
+                "MatMul:124",
+                "MatMul:127",
+                "MatMul:130"
+            ],
+            "kargs": {
+                "axis": 0
+            },
+            "dim": [
+                19,
+                1
+            ]
+        },
+        {
+            "node_type": "Variable",
+            "name": "LSTM_Wf_4",
+            "parents": [],
+            "children": [
+                "MatMul:121"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                19
+            ]
+        },
+        {
+            "node_type": "Variable",
+            "name": "LSTM_Bf_4",
+            "parents": [],
+            "children": [
+                "Add:122"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "Variable",
+            "name": "LSTM_Wi_4",
+            "parents": [],
+            "children": [
+                "MatMul:124"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                19
+            ]
+        },
+        {
+            "node_type": "Variable",
+            "name": "LSTM_Bi_4",
+            "parents": [],
+            "children": [
+                "Add:125"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "Variable",
+            "name": "LSTM_Wc_4",
+            "parents": [],
+            "children": [
+                "MatMul:127"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                19
+            ]
+        },
+        {
+            "node_type": "Variable",
+            "name": "LSTM_Bc_4",
+            "parents": [],
+            "children": [
+                "Add:128"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "Variable",
+            "name": "LSTM_Wo_4",
+            "parents": [],
+            "children": [
+                "MatMul:130"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                19
+            ]
+        },
+        {
+            "node_type": "Variable",
+            "name": "LSTM_Bo_4",
+            "parents": [],
+            "children": [
+                "Add:131"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "MatMul",
+            "name": "MatMul:121",
+            "parents": [
+                "LSTM_Wf_4",
+                "LSTM_concat_4"
+            ],
+            "children": [
+                "Add:122"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "Add",
+            "name": "Add:122",
+            "parents": [
+                "MatMul:121",
+                "LSTM_Bf_4"
+            ],
+            "children": [
+                "LSTM_gateforget_4"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "Logistic",
+            "name": "LSTM_gateforget_4",
+            "parents": [
+                "Add:122"
+            ],
+            "children": [
+                "LSTM_multiply_C0_forget_4"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "MatMul",
+            "name": "MatMul:124",
+            "parents": [
+                "LSTM_Wi_4",
+                "LSTM_concat_4"
+            ],
+            "children": [
+                "Add:125"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "Add",
+            "name": "Add:125",
+            "parents": [
+                "MatMul:124",
+                "LSTM_Bi_4"
+            ],
+            "children": [
+                "LSTM_gateinput_4"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "Logistic",
+            "name": "LSTM_gateinput_4",
+            "parents": [
+                "Add:125"
+            ],
+            "children": [
+                "LSTM_multiply_gateinput_Chat_4"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "MatMul",
+            "name": "MatMul:127",
+            "parents": [
+                "LSTM_Wc_4",
+                "LSTM_concat_4"
+            ],
+            "children": [
+                "Add:128"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "Add",
+            "name": "Add:128",
+            "parents": [
+                "MatMul:127",
+                "LSTM_Bc_4"
+            ],
+            "children": [
+                "LSTM_C-hat_4"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "Logistic",
+            "name": "LSTM_C-hat_4",
+            "parents": [
+                "Add:128"
+            ],
+            "children": [
+                "LSTM_multiply_gateinput_Chat_4"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "MatMul",
+            "name": "MatMul:130",
+            "parents": [
+                "LSTM_Wo_4",
+                "LSTM_concat_4"
+            ],
+            "children": [
+                "Add:131"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "Add",
+            "name": "Add:131",
+            "parents": [
+                "MatMul:130",
+                "LSTM_Bo_4"
+            ],
+            "children": [
+                "LSTM_gateoutput_4"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "Logistic",
+            "name": "LSTM_gateoutput_4",
+            "parents": [
+                "Add:131"
+            ],
+            "children": [
+                "LSTM_h_4"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "Multiply",
+            "name": "LSTM_multiply_C0_forget_4",
+            "parents": [
+                "LSTM_add_3",
+                "LSTM_gateforget_4"
+            ],
+            "children": [
+                "LSTM_add_4"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "Multiply",
+            "name": "LSTM_multiply_gateinput_Chat_4",
+            "parents": [
+                "LSTM_gateinput_4",
+                "LSTM_C-hat_4"
+            ],
+            "children": [
+                "LSTM_add_4"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "Add",
+            "name": "LSTM_add_4",
+            "parents": [
+                "LSTM_multiply_C0_forget_4",
+                "LSTM_multiply_gateinput_Chat_4"
+            ],
+            "children": [
+                "LSTM_tanh_4",
+                "LSTM_multiply_C0_forget_5"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "Tanh",
+            "name": "LSTM_tanh_4",
+            "parents": [
+                "LSTM_add_4"
+            ],
+            "children": [
+                "LSTM_h_4"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "Multiply",
+            "name": "LSTM_h_4",
+            "parents": [
+                "LSTM_tanh_4",
+                "LSTM_gateoutput_4"
+            ],
+            "children": [
+                "LSTM_concat_5"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "Concat",
+            "name": "LSTM_concat_5",
+            "parents": [
+                "LSTM_h_4",
+                "input_vec_5"
+            ],
+            "children": [
+                "MatMul:147",
+                "MatMul:150",
+                "MatMul:153",
+                "MatMul:156"
+            ],
+            "kargs": {
+                "axis": 0
+            },
+            "dim": [
+                19,
+                1
+            ]
+        },
+        {
+            "node_type": "Variable",
+            "name": "LSTM_Wf_5",
+            "parents": [],
+            "children": [
+                "MatMul:147"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                19
+            ]
+        },
+        {
+            "node_type": "Variable",
+            "name": "LSTM_Bf_5",
+            "parents": [],
+            "children": [
+                "Add:148"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "Variable",
+            "name": "LSTM_Wi_5",
+            "parents": [],
+            "children": [
+                "MatMul:150"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                19
+            ]
+        },
+        {
+            "node_type": "Variable",
+            "name": "LSTM_Bi_5",
+            "parents": [],
+            "children": [
+                "Add:151"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "Variable",
+            "name": "LSTM_Wc_5",
+            "parents": [],
+            "children": [
+                "MatMul:153"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                19
+            ]
+        },
+        {
+            "node_type": "Variable",
+            "name": "LSTM_Bc_5",
+            "parents": [],
+            "children": [
+                "Add:154"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "Variable",
+            "name": "LSTM_Wo_5",
+            "parents": [],
+            "children": [
+                "MatMul:156"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                19
+            ]
+        },
+        {
+            "node_type": "Variable",
+            "name": "LSTM_Bo_5",
+            "parents": [],
+            "children": [
+                "Add:157"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "MatMul",
+            "name": "MatMul:147",
+            "parents": [
+                "LSTM_Wf_5",
+                "LSTM_concat_5"
+            ],
+            "children": [
+                "Add:148"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "Add",
+            "name": "Add:148",
+            "parents": [
+                "MatMul:147",
+                "LSTM_Bf_5"
+            ],
+            "children": [
+                "LSTM_gateforget_5"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "Logistic",
+            "name": "LSTM_gateforget_5",
+            "parents": [
+                "Add:148"
+            ],
+            "children": [
+                "LSTM_multiply_C0_forget_5"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "MatMul",
+            "name": "MatMul:150",
+            "parents": [
+                "LSTM_Wi_5",
+                "LSTM_concat_5"
+            ],
+            "children": [
+                "Add:151"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "Add",
+            "name": "Add:151",
+            "parents": [
+                "MatMul:150",
+                "LSTM_Bi_5"
+            ],
+            "children": [
+                "LSTM_gateinput_5"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "Logistic",
+            "name": "LSTM_gateinput_5",
+            "parents": [
+                "Add:151"
+            ],
+            "children": [
+                "LSTM_multiply_gateinput_Chat_5"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "MatMul",
+            "name": "MatMul:153",
+            "parents": [
+                "LSTM_Wc_5",
+                "LSTM_concat_5"
+            ],
+            "children": [
+                "Add:154"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "Add",
+            "name": "Add:154",
+            "parents": [
+                "MatMul:153",
+                "LSTM_Bc_5"
+            ],
+            "children": [
+                "LSTM_C-hat_5"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "Logistic",
+            "name": "LSTM_C-hat_5",
+            "parents": [
+                "Add:154"
+            ],
+            "children": [
+                "LSTM_multiply_gateinput_Chat_5"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "MatMul",
+            "name": "MatMul:156",
+            "parents": [
+                "LSTM_Wo_5",
+                "LSTM_concat_5"
+            ],
+            "children": [
+                "Add:157"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "Add",
+            "name": "Add:157",
+            "parents": [
+                "MatMul:156",
+                "LSTM_Bo_5"
+            ],
+            "children": [
+                "LSTM_gateoutput_5"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "Logistic",
+            "name": "LSTM_gateoutput_5",
+            "parents": [
+                "Add:157"
+            ],
+            "children": [
+                "LSTM_h_5"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "Multiply",
+            "name": "LSTM_multiply_C0_forget_5",
+            "parents": [
+                "LSTM_add_4",
+                "LSTM_gateforget_5"
+            ],
+            "children": [
+                "LSTM_add_5"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "Multiply",
+            "name": "LSTM_multiply_gateinput_Chat_5",
+            "parents": [
+                "LSTM_gateinput_5",
+                "LSTM_C-hat_5"
+            ],
+            "children": [
+                "LSTM_add_5"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "Add",
+            "name": "LSTM_add_5",
+            "parents": [
+                "LSTM_multiply_C0_forget_5",
+                "LSTM_multiply_gateinput_Chat_5"
+            ],
+            "children": [
+                "LSTM_tanh_5"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "Tanh",
+            "name": "LSTM_tanh_5",
+            "parents": [
+                "LSTM_add_5"
+            ],
+            "children": [
+                "LSTM_h_5"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "Multiply",
+            "name": "LSTM_h_5",
+            "parents": [
+                "LSTM_tanh_5",
+                "LSTM_gateoutput_5"
+            ],
+            "children": [
+                "MatMul:166"
+            ],
+            "kargs": {},
+            "dim": [
+                10,
+                1
+            ]
+        },
+        {
+            "node_type": "Variable",
+            "name": "Variable:164",
+            "parents": [],
+            "children": [
+                "MatMul:166"
+            ],
+            "kargs": {
+                "print_gradient": null
+            },
+            "dim": [
+                40,
+                10
+            ]
+        },
+        {
+            "node_type": "Variable",
+            "name": "Variable:165",
+            "parents": [],
+            "children": [
+                "Add:167"
+            ],
+            "kargs": {
+                "print_gradient": null
+            },
+            "dim": [
+                40,
+                1
+            ]
+        },
+        {
+            "node_type": "MatMul",
+            "name": "MatMul:166",
+            "parents": [
+                "Variable:164",
+                "LSTM_h_5"
+            ],
+            "children": [
+                "Add:167"
+            ],
+            "kargs": {},
+            "dim": [
+                40,
+                1
+            ]
+        },
+        {
+            "node_type": "Add",
+            "name": "Add:167",
+            "parents": [
+                "MatMul:166",
+                "Variable:165"
+            ],
+            "children": [
+                "ReLU:168"
+            ],
+            "kargs": {},
+            "dim": [
+                40,
+                1
+            ]
+        },
+        {
+            "node_type": "ReLU",
+            "name": "ReLU:168",
+            "parents": [
+                "Add:167"
+            ],
+            "children": [
+                "MatMul:171"
+            ],
+            "kargs": {},
+            "dim": [
+                40,
+                1
+            ]
+        },
+        {
+            "node_type": "Variable",
+            "name": "Variable:169",
+            "parents": [],
+            "children": [
+                "MatMul:171"
+            ],
+            "kargs": {
+                "print_gradient": null
+            },
+            "dim": [
+                1,
+                40
+            ]
+        },
+        {
+            "node_type": "Variable",
+            "name": "Variable:170",
+            "parents": [],
+            "children": [
+                "Add:172"
+            ],
+            "kargs": {
+                "print_gradient": null
+            },
+            "dim": [
+                1,
+                1
+            ]
+        },
+        {
+            "node_type": "MatMul",
+            "name": "MatMul:171",
+            "parents": [
+                "Variable:169",
+                "ReLU:168"
+            ],
+            "children": [
+                "Add:172"
+            ],
+            "kargs": {},
+            "dim": [
+                1,
+                1
+            ]
+        },
+        {
+            "node_type": "Add",
+            "name": "Add:172",
+            "parents": [
+                "MatMul:171",
+                "Variable:170"
+            ],
+            "children": [
+                "ReLU:173"
+            ],
+            "kargs": {},
+            "dim": [
+                1,
+                1
+            ]
+        },
+        {
+            "node_type": "ReLU",
+            "name": "ReLU:173",
+            "parents": [
+                "Add:172"
+            ],
+            "children": [
+                "MeanSquaredErrorLoss:175",
+                "MAELoss:176"
+            ],
+            "kargs": {},
+            "dim": [
+                1,
+                1
+            ]
+        },
+        {
+            "node_type": "Variable",
+            "name": "Variable:174",
+            "parents": [],
+            "children": [
+                "MeanSquaredErrorLoss:175",
+                "MAELoss:176"
+            ],
+            "kargs": {},
+            "dim": [
+                1,
+                1
+            ]
+        },
+        {
+            "node_type": "MeanSquaredErrorLoss",
+            "name": "MeanSquaredErrorLoss:175",
+            "parents": [
+                "ReLU:173",
+                "Variable:174"
+            ],
+            "children": [],
+            "kargs": {}
+        },
+        {
+            "node_type": "MAELoss",
+            "name": "MAELoss:176",
+            "parents": [
+                "ReLU:173",
+                "Variable:174"
+            ],
+            "children": [],
+            "kargs": {},
+            "dim": [
+                1,
+                1
+            ]
+        }
+    ]
+}

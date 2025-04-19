@@ -1,0 +1,306 @@
+{
+    "meta": {
+        "save_time": "2023-06-15 11:23:21.773375",
+        "weights_file_name": "weights.npz"
+    },
+    "service": {},
+    "graph": [
+        {
+            "node_type": "Variable",
+            "name": "input",
+            "parents": [],
+            "children": [
+                "MatMul:7"
+            ],
+            "kargs": {},
+            "dim": [
+                63,
+                1
+            ]
+        },
+        {
+            "node_type": "Variable",
+            "name": "W1",
+            "parents": [],
+            "children": [
+                "MatMul:7"
+            ],
+            "kargs": {},
+            "dim": [
+                128,
+                63
+            ]
+        },
+        {
+            "node_type": "Variable",
+            "name": "b1",
+            "parents": [],
+            "children": [
+                "Add:8"
+            ],
+            "kargs": {},
+            "dim": [
+                128,
+                1
+            ]
+        },
+        {
+            "node_type": "Variable",
+            "name": "W2",
+            "parents": [],
+            "children": [
+                "MatMul:10"
+            ],
+            "kargs": {},
+            "dim": [
+                128,
+                128
+            ]
+        },
+        {
+            "node_type": "Variable",
+            "name": "b2",
+            "parents": [],
+            "children": [
+                "Add:11"
+            ],
+            "kargs": {},
+            "dim": [
+                128,
+                1
+            ]
+        },
+        {
+            "node_type": "Variable",
+            "name": "W3",
+            "parents": [],
+            "children": [
+                "MatMul:13"
+            ],
+            "kargs": {},
+            "dim": [
+                1,
+                128
+            ]
+        },
+        {
+            "node_type": "Variable",
+            "name": "b3",
+            "parents": [],
+            "children": [
+                "Add:14"
+            ],
+            "kargs": {},
+            "dim": [
+                1,
+                1
+            ]
+        },
+        {
+            "node_type": "MatMul",
+            "name": "MatMul:7",
+            "parents": [
+                "W1",
+                "input"
+            ],
+            "children": [
+                "Add:8"
+            ],
+            "kargs": {},
+            "dim": [
+                128,
+                1
+            ]
+        },
+        {
+            "node_type": "Add",
+            "name": "Add:8",
+            "parents": [
+                "MatMul:7",
+                "b1"
+            ],
+            "children": [
+                "ReLU1"
+            ],
+            "kargs": {},
+            "dim": [
+                128,
+                1
+            ]
+        },
+        {
+            "node_type": "ReLU",
+            "name": "ReLU1",
+            "parents": [
+                "Add:8"
+            ],
+            "children": [
+                "MatMul:10"
+            ],
+            "kargs": {},
+            "dim": [
+                128,
+                1
+            ]
+        },
+        {
+            "node_type": "MatMul",
+            "name": "MatMul:10",
+            "parents": [
+                "W2",
+                "ReLU1"
+            ],
+            "children": [
+                "Add:11"
+            ],
+            "kargs": {},
+            "dim": [
+                128,
+                1
+            ]
+        },
+        {
+            "node_type": "Add",
+            "name": "Add:11",
+            "parents": [
+                "MatMul:10",
+                "b2"
+            ],
+            "children": [
+                "ReLU2"
+            ],
+            "kargs": {},
+            "dim": [
+                128,
+                1
+            ]
+        },
+        {
+            "node_type": "ReLU",
+            "name": "ReLU2",
+            "parents": [
+                "Add:11"
+            ],
+            "children": [
+                "MatMul:13"
+            ],
+            "kargs": {},
+            "dim": [
+                128,
+                1
+            ]
+        },
+        {
+            "node_type": "MatMul",
+            "name": "MatMul:13",
+            "parents": [
+                "W3",
+                "ReLU2"
+            ],
+            "children": [
+                "Add:14"
+            ],
+            "kargs": {},
+            "dim": [
+                1,
+                1
+            ]
+        },
+        {
+            "node_type": "Add",
+            "name": "Add:14",
+            "parents": [
+                "MatMul:13",
+                "b3"
+            ],
+            "children": [
+                "output"
+            ],
+            "kargs": {},
+            "dim": [
+                1,
+                1
+            ]
+        },
+        {
+            "node_type": "Tanh",
+            "name": "output",
+            "parents": [
+                "Add:14"
+            ],
+            "children": [
+                "MAELoss:17",
+                "MeanSquaredErrorLoss:18",
+                "MAELoss:20"
+            ],
+            "kargs": {},
+            "dim": [
+                1,
+                1
+            ]
+        },
+        {
+            "node_type": "Variable",
+            "name": "Variable:16",
+            "parents": [],
+            "children": [
+                "MAELoss:17",
+                "MeanSquaredErrorLoss:18",
+                "MAELoss:20"
+            ],
+            "kargs": {},
+            "dim": [
+                1,
+                1
+            ]
+        },
+        {
+            "node_type": "MAELoss",
+            "name": "MAELoss:17",
+            "parents": [
+                "output",
+                "Variable:16"
+            ],
+            "children": [
+                "Add:19"
+            ],
+            "kargs": {}
+        },
+        {
+            "node_type": "MeanSquaredErrorLoss",
+            "name": "MeanSquaredErrorLoss:18",
+            "parents": [
+                "output",
+                "Variable:16"
+            ],
+            "children": [
+                "Add:19"
+            ],
+            "kargs": {}
+        },
+        {
+            "node_type": "Add",
+            "name": "Add:19",
+            "parents": [
+                "MAELoss:17",
+                "MeanSquaredErrorLoss:18"
+            ],
+            "children": [],
+            "kargs": {}
+        },
+        {
+            "node_type": "MAELoss",
+            "name": "MAELoss:20",
+            "parents": [
+                "output",
+                "Variable:16"
+            ],
+            "children": [],
+            "kargs": {},
+            "dim": [
+                1,
+                1
+            ]
+        }
+    ]
+}

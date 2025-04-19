@@ -1,0 +1,2 @@
+The best model for validation is epoch5.
+validation_loss = 0.46689234
